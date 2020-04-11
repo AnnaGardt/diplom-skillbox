@@ -1888,6 +1888,7 @@ body {
 
 .form__answer {
 	display: none;
+	text-align: center;
 }
 
 .answer__active {
