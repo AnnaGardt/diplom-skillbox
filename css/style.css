@@ -284,7 +284,7 @@ body {
 	}
 
 	.nav__link:hover {
-		border-bottom: none;
+		border-bottom: none;		
 	}
 
 	.header__content {
@@ -1136,9 +1136,8 @@ body {
 	-o-transition-timing-function: linear;
 	transition-timing-function: linear;
 }
-
+/*
 .footer-menu__link:hover {
-	color: #000;
 	-webkit-transition-property: color;
 	-o-transition-property: color;
 	transition-property: color;
@@ -1148,7 +1147,7 @@ body {
 	-webkit-transition-timing-function: linear;
 	-o-transition-timing-function: linear;
 	transition-timing-function: linear;
-}
+}*/
 
 .footer__column3 {
 	padding: 0 36px;
@@ -1727,15 +1726,11 @@ body {
 }
 
 /*Стили для кнопки Закрыть*/
-.nav__close, .popup__close {
-	text-align: right;
-	width: 100%;
-}
-
 .close {
 	margin: 0 0 0 auto;
 	width: 22px;
 	height: 22px;
+	font-size: 20px;
 	background-color: transparent;
 	border: none;
 	outline: none;
@@ -1771,9 +1766,12 @@ body {
 	box-shadow: 0 0 15px 8px rgba(100%, 31%, 18%, 0.15);
 }
 
+.close_popup {
+	display: block;
+}
+
 
 /*Стили для элементов вспывающих окон*/
-
 .form__title {
 	text-align: center;
 	font-size: 34px;
@@ -1859,13 +1857,15 @@ body {
 }
 
 .form__send {
+	margin: 20px auto;
+	width: 270px;
+	display: block;
 	color: #FFF;
 	background-color: #ff4e2e;
 	border: none;
 	font-size: 18px;
 	line-height: 60px;
-	cursor: pointer;
-	width: 270px;
+	cursor: pointer;	
 }
 
 @media (max-width: 950px) {
@@ -1876,29 +1876,16 @@ body {
 
 @media screen and (orientation:landscape) and (max-height: 500px) {
 	.popup__content {
-		margin-top: 80px;
-		max-width: none;
-	}
-
-	.form__fields {
-		width: 100%;
-		display: -webkit-box;
-		display: -ms-flexbox;
-		display: flex;
-		-webkit-box-pack: justify;
-		-ms-flex-pack: justify;
-		justify-content: space-between;
-		-ms-flex-wrap: wrap;
-		flex-wrap: wrap;
-	}
-
-	.form__item {
-		width: 48%;
-	}
+		margin-top: 80px;		
+	}	
 }
 
 @media screen and (orientation:landscape) and (max-height: 450px) {
 	.popup__content {
 		margin-top: 0;
 	}
+}
+
+.form__answer {
+	display: none;
 }

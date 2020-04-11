@@ -38,7 +38,6 @@ $ (function() {
 
 	//Вызов функции закрыть меню при нажатии на кнопку Закрыть
 	$('body').on('click','#menu-mobile-off', function(e){
-		e.preventDefault();
 		closeMobileMenu();
 	});
 
@@ -54,7 +53,7 @@ $ (function() {
 	});
 
 
-	//ОКНО ЗАКАКЗ УСЛУГИ ИЛИ ЗВОНКА
+	//ОКНО ЗАКАЗ УСЛУГИ ИЛИ ЗВОНКА
 	//Открываем модальное окно Заказ услуги/звонка
 	$('body').on ('click', function(e){
 		let btnId = e.target.id;

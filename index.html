@@ -30,9 +30,7 @@
 					<nav class="nav nav-mobile" id="nav">
 						<div class="nav__inner">
 							<div class="nav__container" id='mobile-menu-content'>
-								<div class="nav__close">
-									<a class="close close-menu" id="menu-mobile-off" href="#">&#10006;</a>				
-								</div>
+								<button class="close close-menu" id="menu-mobile-off">&#10006;</button>				
 								<ul class="nav__list">
 									<li class="nav__item"><a href="#what-doing" class="nav__link">Услуги</a></li>
 									<li class="nav__item"><a href="#portfolio" class="nav__link">Портфолио</a></li>
@@ -172,9 +170,9 @@
 				<div class="footer__item footer__column1">
 					<nav>
 						<ul class="footer-menu">
-							<li class="footer-menu__item"><a href="#what-doing" class="footer-menu__link">Услуги</a></li>
-							<li class="footer-menu__item"><a href="#portfolio" class="footer-menu__link">Портфолио</a></li>
-							<li class="footer-menu__item"><a href="#price" class="footer-menu__link">Стоимость</a></li>
+							<li class="footer-menu__item"><a href="#what-doing" class="nav__link footer-menu__link">Услуги</a></li>
+							<li class="footer-menu__item"><a href="#portfolio" class="nav__link footer-menu__link">Портфолио</a></li>
+							<li class="footer-menu__item"><a href="#price" class="nav__link footer-menu__link">Стоимость</a></li>
 						</ul>
 					</nav>
 				</div>
@@ -207,41 +205,31 @@
 	<!--Окно для всплывающей формы Заказать услугу-->
 	<div class="popup" id="pop-up-order">
 		<div class="popup__content" id="pop-up-order-content">
-			<div class="popup__close">
-				<div class="close link-shrink" id="order-off">&#10006;</div>	
-			</div>
+			<button class="close close_popup link-shrink" id="order-off">&#10006;</button>	
 			<form class="form">
 				<h3 class="form__title" id="form-title">Заказать консультацию</h3>
 				<div class="form__fields">
-					<div class="form__item">
-						<label>
-							<span class="form__text">* Ваше имя:</span>
-							<input type="text" name="name" class="form__name" required="required" placeholder="Имя">
-						</label>
-					</div>
-					<div class="form__item">
-						<label>
-							<span class="form__text">* Телефон:</span>
-							<input type="tel" name="phone" class="form__phone" required="required" placeholder="+7 (___) ___-__-__">
-						</label>
-					</div>
-					<div class="form__item">
-						<label>
-							<span class="form__text email-field" id="span-email">* E-mail:</span>
-							<input type="email" name="email" class="form__email" id="emailField">
-						</label>
-					</div>
-					<div class="form__item">
-						<label>
-							<span class="form__text">Комментарии:</span>
-							<textarea name="comments" class="form__comments"></textarea>
-						</label>
-					</div>
+					<label>
+						<span class="form__text">* Ваше имя:</span>
+						<input type="text" name="name" class="form__name" required="required" placeholder="Имя">
+					</label>						
+					<label>
+						<span class="form__text">* Телефон:</span>
+						<input type="tel" name="phone" class="form__phone" required="required" placeholder="+7 (___) ___-__-__">
+					</label>						
+					<label>
+						<span class="form__text email-field" id="span-email">* E-mail:</span>
+						<input type="email" name="email" class="form__email" id="emailField">
+					</label>									
+					<label>
+						<span class="form__text">Комментарии:</span>
+						<textarea name="comments" class="form__comments"></textarea>
+					</label>					
 				</div>
-				<div class="form__btn">
-					<input type="submit" name="send" class="form__send hvr-grow-shadow" value="Заказать консультацию" id="form-btn">
-				</div>
-			</form>	
+				<input type="submit" name="send" class="form__send hvr-grow-shadow" value="Заказать консультацию" id="form-btn">			
+			</form>
+			<p class="form__text form__answer">Спасибо! Данные формы успешно отправлены.</p>
+			<p class="form__text form__answer">В ближайшее время с Вами свяжется наш менеджер!</p>	
 		</div>
 	</div>
 
