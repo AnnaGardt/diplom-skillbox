@@ -88,6 +88,13 @@ $ (function() {
 		$('#pop-up-order').css('display','none');	
 		enable();
 	}
+	
+	//При нажатии кнопки отправить
+	$('body').on('click', '#form-btn', function(){
+		$('#pop-up-order').css('display','block');
+		$('.form').css('display','none');
+		$('.form__answer').addClass('answer__active');
+	});
 
 	//Закрываем форму при нажатии на кнопку Закрыть
 	$('body').on('click','#order-off', function(){

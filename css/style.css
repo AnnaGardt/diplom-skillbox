@@ -1889,3 +1889,7 @@ body {
 .form__answer {
 	display: none;
 }
+
+.answer__active {
+	display: block;
+}
