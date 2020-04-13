@@ -57,6 +57,8 @@ $ (function() {
 	//Открываем модальное окно Заказ услуги/звонка
 	$('body').on ('click', function(e){
 		let btnId = e.target.id;
+		$('.form').css('display','block');
+		$('.form__answer').removeClass('answer__active');
 
 		/*форма с емейлом*/
 		if ((btnId == 'btn-more') || (btnId == 'btn-order-doing') || (btnId == 'btn-order-portfolio')) {
@@ -94,6 +96,7 @@ $ (function() {
 		$('#pop-up-order').css('display','block');
 		$('.form').css('display','none');
 		$('.form__answer').addClass('answer__active');
+		$('input').val('').change();		
 	});
 
 	//Закрываем форму при нажатии на кнопку Закрыть
