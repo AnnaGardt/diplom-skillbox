@@ -56,14 +56,14 @@ $ (function() {
 	//ОКНО ЗАКАЗ УСЛУГИ ИЛИ ЗВОНКА
 	//Открываем модальное окно Заказ услуги/звонка
 	$('body').on ('click', function(e){
+	    $('.form__answer').removeClass('answer__active');
+	    $('input').removeClass('error');
 		let btnId = e.target.id;
-		$('.form').css('display','block');
-		$('.form__answer').removeClass('answer__active');
-
+		
 		/*форма с емейлом*/
 		if ((btnId == 'btn-more') || (btnId == 'btn-order-doing') || (btnId == 'btn-order-portfolio')) {
 			$('#pop-up-order').css('display','block');
-			$('#emailField').attr('required', '');
+			$('#emailField').val('');
 			disable();
 		};
 
@@ -72,6 +72,7 @@ $ (function() {
 			$('#pop-up-order').css('display','block');
 			$("#form-title").text('Заказать обратный звонок');
 			$('#emailField').css('display','none');
+			$('#emailField').val('-');
 			$('#span-email').css('display','none');
 			$('#form-btn').val('Заказать звонок');
 			disable();
@@ -82,7 +83,6 @@ $ (function() {
 	function closeModalWithEmail() {
 		//Возвращаю значения по умолчанию
 		$("#form-title").text('Заказать консультацию');
-		$('#emailField').removeAttr('required');
 		$('#emailField').css('display','block');
 		$('#span-email').css('display','block');
 		$('#form-btn').val('Заказать консультацию');
@@ -91,13 +91,43 @@ $ (function() {
 		enable();
 	}
 	
-	//При нажатии кнопки отправить
-	$('body').on('click', '#form-btn', function(){
-		$('#pop-up-order').css('display','block');
-		$('.form').css('display','none');
-		$('.form__answer').addClass('answer__active');
-		$('input').val('').change();		
+
+	$('form').each(function(){
+		$(this).validate({
+			errorPlacement(error, element) {
+				return true;
+			},
+
+			focusInvalid: false,
+			rules: {
+				name: {
+					required: true,
+					minlength: 3,
+					maxlength: 30
+				},
+				phone: {
+					required: true,
+				},
+				email: {
+					required: true,
+					email: true,
+				}
+			},
+			submitHandler(form){
+				let dataForm = $(form);
+
+				$.ajax({
+					type: 'POST',
+					url: 'php/send.php',
+					data: dataForm.serialize(),
+				}).done(() => {
+					dataForm.trigger('reset');
+					$('.form__answer').addClass('answer__active');
+				});
+			}
+		});
 	});
+	
 
 	//Закрываем форму при нажатии на кнопку Закрыть
 	$('body').on('click','#order-off', function(){
@@ -106,8 +136,9 @@ $ (function() {
 
 	//Вызов функции закрытия меню при нажатии вне модального окна
 	$(document).mouseup(function (e){
-		var div=$("#pop-up-order-content");
-		if ((!div.is(e.target)) && (div.has(e.target).length===0)) {closeModalWithEmail();};
+		var div = $('#pop-up-order-content');
+		
+		if ((!div.is(e.target)) && (div.has(e.target).length === 0)) {closeModalWithEmail();};
 	});	
 
 	$('input[type="tel"]').inputmask({"mask": "+7 (999) 999-9999"}); //specifying options
