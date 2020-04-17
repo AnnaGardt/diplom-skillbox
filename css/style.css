@@ -59,7 +59,7 @@ body {
 	}
 }
 
-@media (max-width: 950px) {
+@media (max-width: 819px) {
 	.container {
 		padding: 0 20px;
 	}
@@ -318,7 +318,7 @@ body {
 	}
 }
 
-@media (max-width: 950px) {
+@media (max-width: 768px) {
 	.header {
 		background-color: #fbfbfb;
 	}
@@ -503,7 +503,7 @@ body {
 	display: none;
 }
 
-@media (max-width: 1199px) {
+@media (max-width: 1220px) {
 	.gradient__img {
 		width: 919px;
 		height: 630px;
@@ -541,6 +541,40 @@ body {
 }
 
 @media (max-width: 950px) {
+	.about__name {
+		font-size: 36px;
+	}
+
+	.about__description {
+		font-size: 20px;
+	}
+}
+
+@media (max-width: 900px) {
+	.about__description {
+		max-width: 260px;
+		line-height: 30px;
+	}
+
+	.about__photo {
+		right: -162px;
+	}
+
+	.gradient__img {
+		right: -401px;	
+	}
+
+	.btn-more {
+		width: 260px;		
+	}
+}
+
+@media (max-width: 768px) {
+	.about__description {
+		max-width: unset;
+		line-height: 54px;
+	}
+
 	.gradient__tablet-bg {
 		display: none;
 	}
@@ -555,19 +589,19 @@ body {
 		width: 100%;
 		top: 0;
 		left: 0;
-		background-color: #fbfbfb;
+		background-color: #fbfbfb;		
 	}
 
 	.gradient__img {
 		width: 470px;
 		height: 391px;
-		right: -92px;
+		right: 80px;
 		bottom: -96px;
 	}
 
 	.about__photo {
 		height: 348px;
-		right: -58px;
+		right: 80px;
 		bottom: 0;
 	}
 
@@ -604,6 +638,43 @@ body {
 		width: 280px;
 	}
 }
+
+@media (max-width: 610px) {
+	.gradient__img {
+		right: 30px;
+		bottom: -96px;
+	}
+
+	.about__photo {
+		right: 30px;
+		bottom: 0;
+	}
+}
+
+@media (max-width: 510px) {
+	.gradient__img {
+		right: 0px;
+		bottom: -96px;
+	}
+
+	.about__photo {
+		right: 0px;
+		bottom: 0;
+	}
+}
+
+@media (max-width: 410px) {
+	.gradient__img {
+		right: -92px;
+		bottom: -96px;
+	}
+
+	.about__photo {
+		right: -58px;
+		bottom: 0;
+	}
+}
+
 
 /*Что я делаю*/
 .what-doing {

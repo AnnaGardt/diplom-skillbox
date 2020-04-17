@@ -50,13 +50,13 @@
   }
 }
 
-@media (min-width: 951px) {
+@media (min-width: 769px) {
   .icon-phone-header:before {
     display: none;
   }
 }
 
-@media (max-width: 950px) {
+@media (max-width: 768px) {
   .icon-phone-header:before {
     margin-right: 0;
     font-size: 14px;
