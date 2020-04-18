@@ -24,7 +24,7 @@ $ (function() {
 	//ДЛЯ МОБИЛЬНОГО МЕНЮ
 
 	//Открываем мобильное меню
-	$('body').on('click','#btn-burger',function(e){
+	$('body').on('click','#btn-burger', function(e){
 		e.preventDefault();
 		$('#nav').addClass('nav-mobile-active');
 		disable();
@@ -55,30 +55,30 @@ $ (function() {
 
 	//ОКНО ЗАКАЗ УСЛУГИ ИЛИ ЗВОНКА
 	//Открываем модальное окно Заказ услуги/звонка
-	$('body').on ('click', function(e){
-	    $('.form__answer').removeClass('answer__active');
+	function resetForm() {
+		$('.form__answer').removeClass('answer__active');
 	    $('input').removeClass('error');
-		let btnId = e.target.id;
-		
-		/*форма с емейлом*/
-		if ((btnId == 'btn-more') || (btnId == 'btn-order-doing') || (btnId == 'btn-order-portfolio')) {
-			$('#pop-up-order').css('display','block');
-			$('#emailField').val('');
-			disable();
-		};
+	};
 
-		/*форма без емейла*/
-		if ((btnId == 'btn-call-back-header') || (btnId == 'call-back-icon') || (btnId == 'btn-call-back-footer') || (btnId == 'btn-text')) {
-			$('#pop-up-order').css('display','block');
-			$("#form-title").text('Заказать обратный звонок');
-			$('#emailField').css('display','none');
-			$('#emailField').val('-');
-			$('#span-email').css('display','none');
-			$('#form-btn').val('Заказать звонок');
-			disable();
-		};
+	$('.btn-more__short').on('click', function(e){
+		resetForm();
+		$('#pop-up-order').css('display','block');
+		$("#form-title").text('Заказать обратный звонок');
+		$('#emailField').css('display','none');
+		$('#emailField').val('-');
+		$('#span-email').css('display','none');
+		$('#form-btn').val('Заказать звонок');
+		disable();
 	});
 
+	$('.btn-more__complete').on('click', function(e){
+		resetForm();
+		$('#pop-up-order').css('display','block');
+		$('#emailField').val('');
+		disable();
+	});
+
+	
 	//Функция, которая закрывает модальное окно Заказ услуги/звонка и включает скролл
 	function closeModalWithEmail() {
 		//Возвращаю значения по умолчанию
@@ -137,7 +137,7 @@ $ (function() {
 	//Вызов функции закрытия меню при нажатии вне модального окна
 	$(document).mouseup(function (e){
 		var div = $('#pop-up-order-content');
-		
+				
 		if ((!div.is(e.target)) && (div.has(e.target).length === 0)) {closeModalWithEmail();};
 	});	
 

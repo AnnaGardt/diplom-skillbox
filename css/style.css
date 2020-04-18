@@ -261,6 +261,7 @@ body {
 		display: block;
 		width: 100%;
 		border-bottom: 1px solid #fc557c;
+		padding: 10px 0;
 	}
 
 	.nav__item:last-Child {
