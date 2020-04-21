@@ -12,7 +12,7 @@ $ (function() {
 	//СКРОЛЛ СТРАНИЦЫ
 	//Функция отключения скролла
 	function disable(){
-		$('body').addClass('body__scroll-off');
+		$('body').addClass('body__scroll-off')
 	};
 
 	//функция включения скролла
@@ -54,44 +54,68 @@ $ (function() {
 
 
 	//ОКНО ЗАКАЗ УСЛУГИ ИЛИ ЗВОНКА
-	//Открываем модальное окно Заказ услуги/звонка
+	//Сбрасываем прошлые данные формы
 	function resetForm() {
 		$('.form__answer').removeClass('answer__active');
 	    $('input').removeClass('error');
 	};
 
-	$('.btn-more__short').on('click', function(e){
+	//Открываем модальное окно
+	function openModal(){
 		resetForm();
-		$('#pop-up-order').css('display','block');
+		$('.popup').css({'top': $(window).scrollTop() + 100}).addClass('popup_active');
+		$('.popup-background').fadeIn();
+		disable();
+	};
+
+	//Обработка клика кнопки Заказать звонок
+	$('.btn-more__short').on('click', function(e){
+		openModal();		
 		$("#form-title").text('Заказать обратный звонок');
 		$('#emailField').css('display','none');
 		$('#emailField').val('-');
 		$('#span-email').css('display','none');
 		$('#form-btn').val('Заказать звонок');
-		disable();
 	});
 
+	//Обработка клика кнопки заказать консультацию
 	$('.btn-more__complete').on('click', function(e){
-		resetForm();
-		$('#pop-up-order').css('display','block');
+		openModal();
 		$('#emailField').val('');
-		disable();
 	});
 
 	
 	//Функция, которая закрывает модальное окно Заказ услуги/звонка и включает скролл
-	function closeModalWithEmail() {
+	function closeModal() {
 		//Возвращаю значения по умолчанию
 		$("#form-title").text('Заказать консультацию');
 		$('#emailField').css('display','block');
 		$('#span-email').css('display','block');
 		$('#form-btn').val('Заказать консультацию');
 		//Убираю с экрана форму
-		$('#pop-up-order').css('display','none');	
+		$('.popup').removeClass('popup_active');	
 		enable();
+		$('.popup').removeClass('popup_active');
+		$('.popup-background').fadeOut();
 	}
-	
 
+	//Закрываем форму при нажатии на кнопку Закрыть
+	$('body').on('click','#order-off', function(){
+		closeModal();
+	})
+
+	//Вызов функции закрытия меню при нажатии вне модального окна
+	$('body').on('click','.popup-background', function(){
+		closeModal();
+	});
+
+	//Нужно, чтобы не включался скролл при клике на содержимом Модального окна
+	$('body').on('click','.popup', function(){
+		$('body').addClass('body__scroll-off');
+	});
+
+
+	//Проверка валидности формы и ее отправка
 	$('form').each(function(){
 		$(this).validate({
 			errorPlacement(error, element) {
@@ -128,18 +152,6 @@ $ (function() {
 		});
 	});
 	
-
-	//Закрываем форму при нажатии на кнопку Закрыть
-	$('body').on('click','#order-off', function(){
-		closeModalWithEmail();
-	})
-
-	//Вызов функции закрытия меню при нажатии вне модального окна
-	$(document).mouseup(function (e){
-		var div = $('#pop-up-order-content');
-				
-		if ((!div.is(e.target)) && (div.has(e.target).length === 0)) {closeModalWithEmail();};
-	});	
 
 	$('input[type="tel"]').inputmask({"mask": "+7 (999) 999-9999"}); //specifying options
 
