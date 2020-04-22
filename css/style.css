@@ -244,7 +244,7 @@ body {
 .gradient__img {
 	position: absolute;
 	bottom: -134px;
-	right: -276px;
+	right: -467px;
 	width: 920px;
 	height: 764px;
 }
@@ -253,7 +253,7 @@ body {
 	position: absolute;
 	z-index: 5;
 	bottom: -15px;
-	right: -25px;
+	right: -218px;
 	height: 677px;
 	width: auto;
 }
@@ -1875,9 +1875,9 @@ body {
 		overflow: hidden;
 		height: 416px;
 		width: 100%;
-		top: 0;
+		top: -213px;
 		left: 0;
-		background-color: #fbfbfb;		
+		background-color: #fbfbfb;	
 	}
 
 	.gradient__img {
