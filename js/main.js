@@ -84,6 +84,16 @@ $ (function() {
 		$('#emailField').val('');
 	});
 
+	//обработка кликов по форме и на кнопке Закрыть в форме
+	$('body').on('click','.popup', function(e){
+		let btnClose = $("#order-off");
+		if (!btnClose.is(e.target)) {
+			$('body').addClass('body__scroll-off');
+			} else {
+				closeModal();
+			};
+	});
+
 	
 	//Функция, которая закрывает модальное окно Заказ услуги/звонка и включает скролл
 	function closeModal() {
@@ -91,28 +101,27 @@ $ (function() {
 		$("#form-title").text('Заказать консультацию');
 		$('#emailField').css('display','block');
 		$('#span-email').css('display','block');
+		$('input').val('');
 		$('#form-btn').val('Заказать консультацию');
 		//Убираю с экрана форму
 		$('.popup').removeClass('popup_active');	
-		enable();
 		$('.popup').removeClass('popup_active');
-		$('.popup-background').fadeOut();
-	}
+		enable();
+		$('.popup-background').fadeOut();		
+	}	
 
-	//Закрываем форму при нажатии на кнопку Закрыть
-	$('body').on('click','#order-off', function(){
+	//Вызов функции закрытия меню при нажатии на кнопку закрыть в модальном окне
+	/*$('body').on('click','#order-off', function(e){
 		closeModal();
-	})
+		$('body').removeClass('body__scroll-off');
+	});*/
 
 	//Вызов функции закрытия меню при нажатии вне модального окна
 	$('body').on('click','.popup-background', function(){
 		closeModal();
 	});
 
-	//Нужно, чтобы не включался скролл при клике на содержимом Модального окна
-	$('body').on('click','.popup', function(){
-		$('body').addClass('body__scroll-off');
-	});
+	
 
 
 	//Проверка валидности формы и ее отправка
